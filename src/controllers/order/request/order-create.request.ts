@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class PaymentLinkCreateReq {
+export class OrderCreateReq {
   @Expose()
   @IsNumber()
   @IsNotEmpty()
