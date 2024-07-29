@@ -54,4 +54,11 @@ export class PaymentService {
     const webhook = this.payOSClient.verifyWebhook(payload);
     console.log(webhook);
   }
+
+  async test() {
+    const a = await this.payOSClient.confirmWebhook(
+      'https://payos-competition-be.onrender.com',
+    );
+    console.log(a);
+  }
 }

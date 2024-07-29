@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CheckoutResponseDataType, WebhookType } from '@payos/node/lib/type';
 import { PaymentService } from './payment.service';
 import { PaymentLinkCreateReq } from './request/payment-link-create.request';
@@ -14,8 +14,13 @@ export class PaymentController {
     return this.paymentService.createPaymentLink(payload);
   }
 
-  @Post('payment-webhook')
+  @Post('payos')
   async paymentWebhook(@Body() payload: WebhookType): Promise<void> {
     return this.paymentService.paymentWebhook(payload);
+  }
+
+  @Get('test')
+  async test() {
+    return this.paymentService.test();
   }
 }
