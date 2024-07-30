@@ -7,19 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Payment {
-  id        Int           @id @default(autoincrement())
-  token     String        @unique
-  orderCode Int           @unique @map("order_code")
-  amount    Int
-  status    PaymentStatus
+model Order {
+  id            Int    @id @default(autoincrement())
+  token         String @unique
+  paymentLinkId String @unique @map("payment_link_id")
+  amount        Int
 
-  @@map("payments")
-}
-
-enum PaymentStatus {
-  PENDING
-  PAID
-  FAILED
-  CANCELED
+  @@map("orders")
 }
